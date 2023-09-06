@@ -1,0 +1,22 @@
+{
+  "name": "log-with-line",
+  "version": "1.0.0",
+  "description": "A simple function to include file/line information with a console.log",
+  "main": "src/index.ts",
+  "author": "Jon Peterson <github@joequincy.dev>",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
+  "scripts": {
+    "build": "rm -r dist/ && make build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.9",
+    "@types/web": "^0.0.114",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

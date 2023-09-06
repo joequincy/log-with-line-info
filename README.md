@@ -1,6 +1,6 @@
 ## log-with-line-info
 This is a little utility to allow for including line info when emitting quick and dirty `console.log` calls. It's opinionated and not meant to be particularly robust... meant for dirty debugging, not production.
-
+a meaningless change
 ## Usage
 
 ESM

@@ -31,7 +31,8 @@ class EnvironmentHelper {
 
   static fileAndLineInfo(line: string) {
     return line
-      .match(/(?:file:\/\/|\()(.*?)\)?$/)![1]
+      .replaceAll('file://', '')
+      .match(/\((.*?)\)?$/)![1]
       .replace(process.cwd(), '.')
   }
 
@@ -52,3 +53,5 @@ export function logWithLineInfo(message?: string) {
 
   console.log(...EnvironmentHelper.buildLogArgs(callerTraceLine, message))
 }
+
+export default logWithLineInfo

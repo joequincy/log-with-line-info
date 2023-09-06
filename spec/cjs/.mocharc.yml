@@ -1,0 +1,4 @@
+node-option:
+  - no-warnings
+package: ./dist/cjs/package.json
+spec: ./spec/cjs/index.spec.cjs

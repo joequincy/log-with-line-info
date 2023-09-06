@@ -1,5 +1,5 @@
 {
-  "name": "log-with-line",
+  "name": "log-with-line-info",
   "version": "1.0.0",
   "description": "A simple function to include file/line information with a console.log",
   "main": "src/index.ts",

@@ -1,13 +1,14 @@
+import chai, { expect } from 'chai'
 import Sinon from 'sinon'
 import sinonChai from 'sinon-chai'
-import chai, { expect } from 'chai'
+
 import logWithLineInfo from '../../dist/esm/index'
 
 chai.use(sinonChai)
 const specFilePattern = '\\./spec/esm/index\\.spec\\.ts:\\d+:\\d+'
 const matchers = {
   colorNoMessage: RegExp(`^\x1b\\[1;30m${specFilePattern}\x1b\\[0m$`),
-  colorWithMessage: RegExp(`^\x1b\\[1;30m${specFilePattern} \\-\x1b\\[0m$`)
+  colorWithMessage: RegExp(`^\x1b\\[1;30m${specFilePattern} \\-\x1b\\[0m$`),
 }
 
 describe('esm', () => {

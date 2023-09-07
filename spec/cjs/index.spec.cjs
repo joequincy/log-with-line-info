@@ -1,6 +1,7 @@
+const chai = require('chai')
 const Sinon = require('sinon')
 const sinonChai = require('sinon-chai')
-const chai = require('chai')
+
 const { logWithLineInfo } = require('../../dist/cjs/index')
 
 chai.use(sinonChai)
@@ -8,7 +9,7 @@ const expect = chai.expect
 const specFilePattern = '\\./spec/cjs/index\\.spec\\.cjs:\\d+:\\d+'
 const matchers = {
   colorNoMessage: RegExp(`^\x1b\\[1;30m${specFilePattern}\x1b\\[0m$`),
-  colorWithMessage: RegExp(`^\x1b\\[1;30m${specFilePattern} \\-\x1b\\[0m$`)
+  colorWithMessage: RegExp(`^\x1b\\[1;30m${specFilePattern} \\-\x1b\\[0m$`),
 }
 
 describe('commonjs', () => {

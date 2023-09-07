@@ -24,7 +24,7 @@ jobs:
         run: yarn test
         continue-on-error: true
       - name: Report Failures
-        if: ${{ steps.lint.outcome == 'failed' || steps.test.outcome == 'failed' }}
+        if: ${{ always() && (steps.lint.outcome == 'failed' || steps.test.outcome == 'failed') }}
         run: |
           echo 'One or more steps failed, check output above and resolve.'
           exit 1

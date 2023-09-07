@@ -27,4 +27,5 @@ jobs:
         run: |
           echo 'linter outcome was ${{ steps.lint.outcome }}'
           echo 'test outcome was ${{ steps.test.outcome }}'
-          if [ "${{ steps.lint.outcome }}" = "failed" ] || [ "${{ steps.test.outcome }}" = "failed" ]; then echo 'One or more steps failed, check output above and resolve.'; exit 1; fi
+          if [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ]; \
+            then echo 'One or more steps failed, check output above and resolve.'; exit 1; fi

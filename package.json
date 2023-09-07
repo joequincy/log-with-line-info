@@ -11,10 +11,11 @@
     "require": "./dist/cjs/index.js"
   },
   "scripts": {
-    "build": "rm -r dist/ && make build",
+    "build": "make build",
     "test": "yarn build && yarn test.cjs && yarn test.esm",
     "test.cjs": "mocha --config ./spec/cjs/.mocharc.yml",
-    "test.esm": "mocha --config ./spec/esm/.mocharc.yml"
+    "test.esm": "mocha --config ./spec/esm/.mocharc.yml",
+    "lint": "eslint --ext ts src"
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",
@@ -23,7 +24,15 @@
     "@types/sinon": "^10.0.16",
     "@types/sinon-chai": "^3.2.9",
     "@types/web": "^0.0.114",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
     "chai": "^4.3.8",
+    "eslint": "^8.48.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-promise": "^6.1.1",
     "mocha": "^10.2.0",
     "sinon": "^15.2.0",
     "sinon-chai": "^3.7.0",

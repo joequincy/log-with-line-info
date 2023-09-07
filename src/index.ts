@@ -1,15 +1,15 @@
-/**
+/* eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func --
  * A way to build a function where `this` is guaranteed
  * to be in the global scope, so we can compare it against
  * `window`.
  */
-const isBrowser: boolean = (new Function(`
+const isBrowser = (new Function(`
 try {
   return this === window
 } catch (_) {
   return false
 }
-`))()
+`))() as boolean
 
 const isTTY = (() => {
   try {
@@ -26,7 +26,7 @@ const traceIndentString = '    at '
 class EnvironmentHelper {
   static formatTrace(trace: string, withMessage = false) {
     const messageSeparator = withMessage ? ' -' : ''
-    return colorPrefix + trace + messageSeparator + colorSuffix;
+    return colorPrefix + trace + messageSeparator + colorSuffix
   }
 
   static fileAndLineInfo(line: string) {
@@ -38,14 +38,14 @@ class EnvironmentHelper {
 
   static buildLogArgs(traceLine: string, message?: string) {
     const args = [this.formatTrace(this.fileAndLineInfo(traceLine), !!message)]
-    if (!!message) args.push(message)
+    if (message) args.push(message)
 
     return args
   }
 }
 
 export function logWithLineInfo(message?: string) {
-  if (isBrowser) return console.log(message)
+  if (isBrowser) { console.log(message); return }
 
   const callerTraceLine = new Error().stack!
     .split('\n')

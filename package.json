@@ -12,7 +12,10 @@
   },
   "scripts": {
     "build": "make build",
-    "test": "yarn build && yarn test.cjs && yarn test.esm",
+    "pretest": "make build",
+    "test": "yarn test.suite && yarn test.noninteractive",
+    "test.suite": "yarn test.cjs && yarn test.esm",
+    "test.noninteractive": "true | (setsid yarn test.suite) 2>&1 | cat",
     "test.cjs": "mocha --config ./spec/cjs/.mocharc.yml",
     "test.esm": "mocha --config ./spec/esm/.mocharc.yml",
     "lint": "eslint --ext ts src"

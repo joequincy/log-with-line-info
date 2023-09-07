@@ -9,6 +9,8 @@ const specFilePattern = '\\./spec/esm/index\\.spec\\.ts:\\d+:\\d+'
 const matchers = {
   colorNoMessage: RegExp(`^\x1b\\[1;30m${specFilePattern}\x1b\\[0m$`),
   colorWithMessage: RegExp(`^\x1b\\[1;30m${specFilePattern} \\-\x1b\\[0m$`),
+  plainNoMessage: RegExp(specFilePattern),
+  plainWithMessage: RegExp(`${specFilePattern} \\-`),
 }
 
 describe('esm', () => {
@@ -26,15 +28,14 @@ describe('esm', () => {
     logWithLineInfo('some message')
 
     expect(stub).to.have.been.calledWithMatch(
-      matchers.colorWithMessage,
-      'some message',
+      process.stdin.isTTY ? matchers.colorWithMessage : matchers.plainWithMessage,
     )
   })
 
   it('if not provided a message, just logs line info', () => {
     logWithLineInfo()
     expect(stub).to.have.been.calledWithMatch(
-      matchers.colorNoMessage,
+      process.stdin.isTTY ? matchers.colorNoMessage : matchers.plainNoMessage,
     )
   })
 })

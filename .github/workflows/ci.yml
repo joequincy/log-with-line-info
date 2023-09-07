@@ -21,7 +21,7 @@ jobs:
         continue-on-error: true
       - name: Test
         id: test
-        run: yarn test
+        run: yarn build && yarn test.suite
         continue-on-error: true
       - name: Report Outcomes
         run: |
